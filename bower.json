@@ -1,0 +1,17 @@
+{
+  "name": "us-names",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Alan Magelssen <alanmagelssen@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
