@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 // Import Material Design
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule, MdToolbarModule,MdSidenavModule} from '@angular/material';
+import {MdButtonModule, MdCheckboxModule, MdToolbarModule, MdSidenavModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {MdInputModule} from '@angular/material';
 import {MdRadioModule} from '@angular/material';
