@@ -17,8 +17,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GraphComponent } from './graph/graph.component';
 
+
+import {JsonpModule } from '@angular/http';
+
 // D3
 import { D3Service } from 'd3-ng2-service';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +42,7 @@ import { D3Service } from 'd3-ng2-service';
     MdRadioModule,
     MdIconModule,
     FormsModule,
+    JsonpModule,
     HttpModule
   ],
   providers: [D3Service],
