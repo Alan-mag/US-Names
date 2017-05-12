@@ -1,0 +1,74 @@
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+
+/***********Container*************/
+.container-fluid {
+  min-height: 100%;
+}
+
+md-sidenav-container {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  top: 64px;
+}
+
+
+/****************Divs****************/
+#detail-sidenav {
+  width: 300px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 10px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #42a5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.graph-div {
+  margin-top: 0;
+}
+
+.detail-card {
+  height: 100%;
+}
+
+md-toolbar {
+  background-color: #42a5f5;
+  color: white;
+}
+
+.search-terms-display {
+ color: grey
+}
+
+/***************Buttons*******************/
+#toolbar-btn {
+  margin-top: 15px;
+
+}
+
+#run-button {
+  margin: 25%;
+  margin-top: -25px;
+}
+
+md-radio-button {
+  margin: 15px;
+}

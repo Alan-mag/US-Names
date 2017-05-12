@@ -22,13 +22,15 @@ import {JsonpModule } from '@angular/http';
 
 // D3
 import { D3Service } from 'd3-ng2-service';
+import { SidenavComputeDataComponent } from './sidenav-compute-data/sidenav-compute-data.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    GraphComponent
+    GraphComponent,
+    SidenavComputeDataComponent
   ],
   imports: [
     BrowserModule,

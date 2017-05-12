@@ -1,0 +1,32 @@
+
+/***********Container*************/
+
+md-sidenav-container {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  top: 64px;
+}
+
+
+/****************Divs****************/
+#detail-sidenav {
+  width: 300px;
+}
+
+.detail-card {
+  height: 100%;
+}
+
+
+/***************Buttons*******************/
+
+#run-button {
+  margin: 25%;
+  margin-top: -25px;
+}
+
+md-radio-button {
+  margin: 15px;
+}

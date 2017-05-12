@@ -1,3 +1,49 @@
-<p>
-  home works!
-</p>
+<md-toolbar>Birth Names in the United States (1880 to 2010)</md-toolbar>
+<md-sidenav-container>
+
+  <!-- Panel Content -->
+  <md-sidenav id="detail-sidenav" #sidenav>
+    <!--<div class="container">-->
+      <md-card class="detail-card">
+        <h1>Info</h1>
+        <md-card-content>
+          <md-input-container>
+            <input mdInput placeholder="Name" #name>
+          </md-input-container>
+        </md-card-content>
+        <md-card-content>
+          <md-radio-group [(ngModel)]="gender">
+            <md-radio-button *ngFor="let gender of genders" [value]="gender">{{gender}}</md-radio-button>
+            <!--<md-radio-button value="Male">Male</md-radio-button>
+            <md-radio-button value="Female">Female</md-radio-button>-->
+          </md-radio-group>
+        </md-card-content>
+        <md-card-content>
+          <button id="run-button" md-raised-button (click)="sidenav.close()"><md-icon>assessment</md-icon></button>
+        </md-card-content>
+      </md-card>
+    <!--</div>-->
+  </md-sidenav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2"> <button md-mini-fab id="toolbar-btn" (click)="sidenav.open()"><md-icon>chevron_left</md-icon></button></div>
+      <div class="col-md-6 search-terms-display">
+        <h1>{{name.value}}</h1>
+        <h3>{{gender}}</h3>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 graph-div">
+        <app-graph></app-graph>
+        <!--<img src="http://www.datavizcatalogue.com/methods/images/top_images/area_graph.png">-->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container"></div>
+  </footer>
+  
+</md-sidenav-container>
