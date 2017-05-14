@@ -7,6 +7,7 @@ declare var localDatabase: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  rank: string = '';
   gender: string;
 
   genders = [
@@ -20,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  submitSearch(name: string, gender: string) {
+  submitSearch(name: string, gender: string, rank: string) {
     // function for searching through db and finding match
     // for each object in localdb array
     // if name matches name && gender matches gender first letter
@@ -40,7 +41,8 @@ export class HomeComponent implements OnInit {
       localDatabase.forEach(element => {
         if (formattedName == element.Name && gender.charAt(0) == element.Gender) {
           match = element;
-          // parse data and format to send to graph component
+          // send string of rank to graph component
+          this.rank = match.Rank;
           console.log(element.Rank.split(" "));
           resolve(match);
         }
@@ -49,8 +51,6 @@ export class HomeComponent implements OnInit {
       if (!match)
         reject("No match for name/gender");
     });
-    
-    
     
     myPromise.then((res) => {
       if (res)
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
      });
 
   }
-
+    
   // search(name: string, gender: string) {
   //   localDatabase.forEach(element => {
   //       if (name == element.Name && gender.charAt(0) == element.Gender) {

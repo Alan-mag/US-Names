@@ -9,6 +9,8 @@ import { D3Service, D3, Selection } from 'd3-ng2-service';
 })
 
 export class GraphComponent implements OnInit {
+  @Input('rank') nameRank: string;
+
   private d3: D3;
   private parentNativeElement: any;
 
@@ -19,6 +21,8 @@ export class GraphComponent implements OnInit {
    }
 
   ngOnInit() {         
+    // console.log(this.nameRank + " in graph component");
+    
     let d3 = this.d3;
     let d3ParentElement: Selection<any, any, any, any>;
 
@@ -58,6 +62,10 @@ export class GraphComponent implements OnInit {
       .attr("dy", ".75em")
       .text(function(d) { return d; });
     }
+  }
+
+  makeGraph() {         // call this function once data is sent and received
+
   }
 
   // need function to gather data and use with d3
