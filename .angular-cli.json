@@ -24,6 +24,7 @@
         "../bower_components/bootstrap/dist/css/bootstrap.css"
       ],
       "scripts": [
+        "../data.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
