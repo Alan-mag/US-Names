@@ -1,5 +1,5 @@
 .chart rect {
-  fill: #ff8f00;
+  fill: steelblue;
 }
 
 .chart text {
@@ -7,4 +7,3 @@
   font: 10px sans-serif;
   text-anchor: end;
 }
-
