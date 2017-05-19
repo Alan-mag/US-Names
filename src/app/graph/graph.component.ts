@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef,OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, ChangeDetectionStrategy} from '@angular/core';
 import { D3Service, D3, Selection } from 'd3-ng2-service';
 
 
@@ -23,81 +23,56 @@ export class GraphComponent implements OnInit {
   ngOnInit() {         
     // console.log(this.nameRank + " in graph component");
     
-    let d3 = this.d3;
-    let d3ParentElement: Selection<any, any, any, any>;
+    // let d3 = this.d3;
+    // let d3ParentElement: Selection<any, any, any, any>;
 
-    /*
-    if (this.parentNativeElement != null) {
-      d3ParentElement = d3.select(this.parentNativeElement);
-
-      
-    var data = [4, 8, 15, 16, 23, 42, 12, 33, 14, 2, 4, 5, 7];
-
-    var margin = {top: 20, right: 30, bottom: 30, left: 40},
-        width = 864 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
-
-    var y = d3.scaleLinear()
-        .domain([0, d3.max(data)])
-        .range([height, 0]);
-
-    var chart = d3.select(".chart")
-        .attr("width", width)
-        .attr("height", height);
-
-    var barWidth = width / data.length;
-
-    var bar = chart.selectAll("g")
-        .data(data)
-      .enter().append("g")
-        .attr("transform", function(d, i) { return "translate(" + i * barWidth + ")"; });
-
-    bar.append("rect")
-      .attr("y", function(d) { return y(d); })
-      .attr("height", function(d) { return height - y(d); })
-      .attr("width", barWidth - 1);
-
-  bar.append("text")
-      .attr("x", barWidth / 2)
-      .attr("y", function(d) { return y(d) + 3; })
-      .attr("dy", ".75em")
-      .text(function(d) { return d; });
-    }*/
   }
 
   makeGraph(rankArray) {         // call this function once data is sent and received
 
-    let d3 = this.d3;
-    let d3ParentElement: Selection<any, any, any, any>;
+    let d3 = this.d3;                                    //  // create variable assign to private member that holds d3 reference
+    let d3ParentElement: Selection<any, any, any, any>;  //  // selection interface
     
-    let data = rankArray;
-    console.log("data in graph = " + data);
+    let data: number[] = [];
+    data = rankArray;                                // gets data from rankArray which is data from parent component
+    //data.unshift(0);
+    console.log("data in graph = " + data);              // console log data 
+
+    var width = 960,                                       // set width 
+        height = 400;                                    // set height
+   
+   var x = d3.scaleBand()
+        .rangeRound([0, width])
+        //.domain(["1880","1890","1900","1910","1920","1930","1940","1950","1960","1970","1980","1990","2000","2010"])
+        .round(true)
+        .padding(0.1);
+        
+  
+   //x.domain(data.map(function(d) { return d; }));
+
+    var y = d3.scaleLinear()                             //  /// constructs a new continuous scale with a unit domain of [0,1] and range [0,1] - range height, 0
+        //.domain([0, d3.max(data, function(d: number): number { return data; })])
+        .range([height, 0]);
+
+
+
+    var chart = d3.select(".chart")                      // d3 selector for chart div in html
+        .attr("width", width)                              // set width of chart
+        .attr("height", height);                         // set chart height equal to height variable value
     
-    var width = 1,
-    barHeight = 20;
+    var barWidth = width / data.length - 20;                  // specify individual bar width by dividing width by data.length
 
-    var x = d3.scaleLinear()
-        //.domain([0, d3.max(data)])
-        .range([0, width]);
+    var bar = chart.selectAll("g")                       // create bar element and g class inside of svg element for bar
+        .data(data)                                      //  // joins specified array of data with elements (in this case g I believe)
+      .enter().append("g")                               // enter d3 g class element within bar
+        .attr("transform", function(d, i) { return "translate(" + i * 50 + "," + 0 + ")"; }); // transform from origin [at top left] not sure what i is - think i is y value of transform
+        //.call(d3.axisLeft(y));
 
-    var chart = d3.select(".chart")
-        .attr("width", 800)
-        .attr("height", barHeight * data.length);
-
-    var bar = chart.selectAll("g")
-        .data(data)
-      .enter().append("g")
-        .attr("transform", function(d, i) { return "translate(0," + i * barHeight + ")"; });
-
-    bar.append("rect")
-        .attr("width", x)
-        .attr("height", barHeight - 1);
-
-    bar.append("text")
-        //.attr("x", function(d) { return x(d) - 3; })
-        .attr("y", barHeight / 2)
-        .attr("dy", ".35em")
-        //.text(function(d) { return d; });
+    bar.append("rect")                                   // append a class rect to each g element inside of bar
+        .attr("y", function(d: number): number {return height - d; })       // set y attribute for new bar in rect class
+        //.attr("height", function(d: number): number { return (height - y(d)); })  // calculate height of rect element
+        .attr("height", function(d: number): number { return d; })
+        .attr("width", barWidth);                    // calculate width of bar element 
   }
 
   ngOnChanges(nameRank: string) {
